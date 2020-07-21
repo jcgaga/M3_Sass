@@ -1,0 +1,73 @@
+/*------------------------------------------------- Fase 1 ----------------------------------------------------------*/
+
+//Parametres no demanats a Fase 1 però necessaris per la configuració.
+@mixin body_parametres {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  line-height: 1.5;
+}
+
+
+// Paraula IT A CA DE MY amb la font: Lato 
+
+body {
+  font-family: 'Lato';
+  @include body_parametres();
+}
+
+//Mostrar la pantalla dividida en 5 blocs (20% de pantalla) amb els colors corresponents
+
+// Generar strips_strip:nth-child(*) amb el ample de 20%, amb un @for
+
+$valor : 0;
+
+@for $i from 1 through 5{
+  .strips__strip:nth-child(#{$i}) {
+    left: #{$valor}vw;
+  }
+  $valor: $valor + 20;
+}
+
+// Fer un @each per asignar el color a cada .strips__strip:nth-child(*) .strip__content 
+
+$colors: (block_1: #244F75,
+          block_2: #60BFBF,
+          block_3: #8C4B7E,
+          block_4: #F8BB44,
+          block_5: #F24B4B
+        ); 
+$i: 1;
+
+@each $block, $color in $colors {
+  .strips__strip:nth-child(#{$i}) .strip__content {
+    background: $color;
+  }
+  $i: $i + 1;
+}
+
+
+// Valors div strip_content 
+
+.strips .strip__content {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+// Valors h1 strip_title 
+
+.strip__title {
+  display: block;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  font-size: 4.5vw;
+  color: white;
+}

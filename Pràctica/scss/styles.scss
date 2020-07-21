@@ -1,0 +1,31 @@
+//Configuració general
+
+* {
+    box-sizing: border-box;
+  }
+  
+  h1, h2 {
+    font-weight: 300;
+  }
+  
+  .fa {
+    font-size: 30px;
+    color: white;
+  }
+  
+  h2 {
+    font-size: 36px;
+    margin: 0 0 16px;
+  }
+  
+  p {
+    margin: 0 0 16px;
+  }
+
+//"@import de les diferents fases demanades a la pràctica.
+  
+@import "fase_1";
+@import "fase_2";
+@import "fase_3";
+@import "fase_4";
+

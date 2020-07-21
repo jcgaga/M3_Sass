@@ -1,0 +1,14 @@
+/*------------------------------------------- Fase 2 -----------------------------------------------------*/
+
+
+
+//Abans d’afegir cada stripe, (:before), afegirem un pla blanc deformat amb una opacitat de 0.1. 
+//Utilitzarem la funció: Skew
+
+//Aquest és codig demanat a la Fase 2
+
+.strips .strip__content:hover:before {
+    -webkit-transform: skew(0deg) scale(3) translate(0, 0);
+            transform: skew(0deg) scale(3) translate(0, 0);
+    opacity: 0.1;
+}

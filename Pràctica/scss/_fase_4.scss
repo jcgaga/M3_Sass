@@ -1,0 +1,99 @@
+/*------------------------------------------- Fase 4 -----------------------------------------------------*/
+// Afegir animacions al entrar els elements a pantalla 
+
+
+//Fer un @for per generar el delay de cada .strips__strip:nth-child(*) .strip__content
+
+$delay:0.1s;
+
+@for $i from 1 through 5{
+    .strips__strip:nth-child(#{$i}) .strip__content {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+        -webkit-animation-name: strip#{$i};
+                animation-name: strip#{$i};
+        -webkit-animation-delay: $delay;
+                animation-delay: $delay;
+      }
+
+      $delay: $delay + 0.1;  
+
+}
+ 
+.strips .strip__content {
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+            animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+
+//Fer un @for per generar l'efecte de'entrada de cada .strips__strip:nth-child(*) .strip__content
+
+$value_x:0;
+$value_y:0;
+$value_z:0;
+
+@for $i from 1 through 5{
+
+    //Aquest if és per assignar el valor de x,y,z de l'efecte translate3d, desplaçament d'entrada inicial dels 5 blocs
+
+    @if $i == 1 {
+        $value_x: -100%;
+        $value_y: 0;
+        $value_z: 0;
+    }
+    @if $i == 2 or $i == 4{
+        
+        $value_x: 0;
+        $value_y: 100%;
+        $value_z: 0;
+
+    }
+    @if $i == 3{
+        $value_x: 0;
+        $value_y: -100%;
+        $value_z: 0;
+    }
+    @if $i == 5{
+        $value_x: 100%;
+        $value_y: 0;
+        $value_z: 0;
+    }  
+        
+    @-webkit-keyframes strip#{$i} {
+        0% {
+          -webkit-transform: translate3d($value_x, $value_y, $value_z);
+                  transform: translate3d($value_x, $value_y, $value_z);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+        }
+      }
+      
+      @keyframes strip#{$i} {
+        0% {
+          -webkit-transform: translate3d($value_x, $value_y, $value_z);
+                  transform: translate3d($value_x, $value_y, $value_z);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+        }
+      } 
+    
+}  
+  
+
